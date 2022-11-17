@@ -146,7 +146,17 @@ public class ConfigurationService {
                 applicationConfiguration.setTier(Tier.STANDARD);
             }
             properties.setApplicationConfiguration(applicationConfiguration);
-        } else {
+        } else if (application.startsWith(ApplicationType.CONTAINER_APP.name())) {
+            ApplicationConfiguration applicationConfiguration = new ApplicationConfiguration();
+            applicationConfiguration.setApplicationType(ApplicationType.CONTAINER_APP);
+            if (application.endsWith(Tier.BASIC.name())) {
+                applicationConfiguration.setTier(Tier.BASIC);
+            } else {
+                applicationConfiguration.setTier(Tier.STANDARD);
+            }
+            properties.setApplicationConfiguration(applicationConfiguration);
+            properties.setRuntimeType(RuntimeType.DOCKER);
+        }else {
             ApplicationConfiguration applicationConfiguration = new ApplicationConfiguration();
             applicationConfiguration.setApplicationType(ApplicationType.APP_SERVICE);
             if (application.endsWith(Tier.BASIC.name())) {

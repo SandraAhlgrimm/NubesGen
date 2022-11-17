@@ -4,4 +4,5 @@ public enum ApplicationType {
     APP_SERVICE,
     FUNCTION,
     SPRING_CLOUD,
+    CONTAINER_APP,
 }

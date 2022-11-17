@@ -289,6 +289,11 @@ public class NubesgenConfiguration {
     }
 
     @JsonIgnore
+    public boolean isApplicationTypeContainerApp() {
+        return ApplicationType.CONTAINER_APP.equals(this.getApplicationConfiguration().getApplicationType());
+    }
+
+    @JsonIgnore
     public boolean isApplicationTierFree() {
         return Tier.FREE.equals(this.getApplicationConfiguration().getTier());
     }
